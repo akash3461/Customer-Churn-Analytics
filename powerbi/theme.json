@@ -1,0 +1,11 @@
+{
+  "name": "Churn Theme",
+  "dataColors": ["#4C78A8", "#E45756", "#F2B134", "#72B7B2", "#54A24B", "#B279A2", "#9D755D", "#BAB0AC"],
+  "background": "#FFFFFF",
+  "foreground": "#262626",
+  "tableAccent": "#E45756",
+  "textClasses": {
+    "title": {"fontSize": 14, "fontFace": "Segoe UI Semibold", "color": "#262626"},
+    "label": {"fontSize": 10, "fontFace": "Segoe UI", "color": "#595959"}
+  }
+}

@@ -1,0 +1,38 @@
+-- Raw table loaded from Data/Raw/Telco_customer_churn.xlsx
+DROP TABLE IF EXISTS customers_raw;
+
+CREATE TABLE customers_raw (
+    customer_id        TEXT PRIMARY KEY,
+    count              INTEGER,
+    country            TEXT,
+    state              TEXT,
+    city               TEXT,
+    zip_code           INTEGER,
+    lat_long           TEXT,
+    latitude           REAL,
+    longitude          REAL,
+    gender             TEXT,
+    senior_citizen     TEXT,
+    partner            TEXT,
+    dependents         TEXT,
+    tenure_months      INTEGER,
+    phone_service      TEXT,
+    multiple_lines     TEXT,
+    internet_service   TEXT,
+    online_security    TEXT,
+    online_backup      TEXT,
+    device_protection  TEXT,
+    tech_support       TEXT,
+    streaming_tv       TEXT,
+    streaming_movies   TEXT,
+    contract           TEXT,
+    paperless_billing  TEXT,
+    payment_method     TEXT,
+    monthly_charges    REAL,
+    total_charges      TEXT,
+    churn_label        TEXT,
+    churn_value        INTEGER,
+    churn_score        INTEGER,
+    cltv               INTEGER,
+    churn_reason       TEXT
+);

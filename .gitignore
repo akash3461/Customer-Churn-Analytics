@@ -1,6 +1,7 @@
-# Ignore large generated processed datasets
-Data/Processed/X_test_scaled.csv
-Data/Processed/X_train_scaled.csv
-
-# Ignore notebook checkpoint files
-**/.ipynb_checkpoints/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+.venv/
+venv/
+.DS_Store
+*.swp

@@ -1,0 +1,43 @@
+// Tables: customer_risk_scores (fact), telco_churn_clean (optional detail)
+// Load Data/Processed/customer_risk_scores.csv
+
+Total Customers = COUNTROWS(customer_risk_scores)
+
+Churned Customers = CALCULATE([Total Customers], customer_risk_scores[churn_value] = 1)
+
+Active Customers = CALCULATE([Total Customers], customer_risk_scores[churn_value] = 0)
+
+Churn Rate = DIVIDE([Churned Customers], [Total Customers])
+
+Total MRR = SUM(customer_risk_scores[monthly_charges])
+
+MRR Lost = CALCULATE([Total MRR], customer_risk_scores[churn_value] = 1)
+
+MRR Lost % = DIVIDE([MRR Lost], [Total MRR])
+
+Annualised Revenue Lost = [MRR Lost] * 12
+
+Avg Tenure (Months) = AVERAGE(customer_risk_scores[tenure_months])
+
+Avg Monthly Charge = AVERAGE(customer_risk_scores[monthly_charges])
+
+CLTV Lost = CALCULATE(SUM(customer_risk_scores[cltv]), customer_risk_scores[churn_value] = 1)
+
+High Risk Active Customers =
+CALCULATE([Total Customers],
+    customer_risk_scores[risk_band] = "High",
+    customer_risk_scores[churn_value] = 0)
+
+MRR At Risk =
+CALCULATE([Total MRR],
+    customer_risk_scores[risk_band] = "High",
+    customer_risk_scores[churn_value] = 0)
+
+Avg Churn Probability = AVERAGE(customer_risk_scores[churn_probability])
+
+Month To Month Share of Churn =
+DIVIDE(
+    CALCULATE([Churned Customers], customer_risk_scores[contract] = "Month-to-month"),
+    [Churned Customers])
+
+Churn Rate vs Overall = [Churn Rate] - CALCULATE([Churn Rate], ALL(customer_risk_scores))
